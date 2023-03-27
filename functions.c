@@ -45,7 +45,6 @@ int print_string(va_list types, char buffer[],
 		if (precision >= 6)
 			str = "      ";
 	}
-
 	while (str[length] != '\0')
 		length++;
 
@@ -69,7 +68,6 @@ int print_string(va_list types, char buffer[],
 			return (width);
 		}
 	}
-
 	return (write(1, str, length));
 }
 /************************* PRINT PERCENT SIGN *************************/
@@ -94,7 +92,6 @@ int print_percent(va_list types, char buffer[],
 	UNUSED(size);
 	return (write(1, "%%", 1));
 }
-
 /************************* PRINT INT *************************/
 /**
  * print_int - Print int
@@ -115,7 +112,7 @@ int print_int(va_list types, char buffer[],
 	unsigned long int num;
 
 	n = convert_size_number(n, size);
-
+	
 	if (n == 0)
 		buffer[i--] = '0';
 
@@ -133,12 +130,10 @@ int print_int(va_list types, char buffer[],
 		buffer[i--] = (num % 10) + '0';
 		num /= 10;
 	}
-
 	i++;
 
 	return (write_number(is_negative, i, buffer, flags, width, precision, size));
 }
-
 /************************* PRINT BINARY *************************/
 /**
  * print_binary - Prints an unsigned number
