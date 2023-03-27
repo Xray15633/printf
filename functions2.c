@@ -24,7 +24,6 @@ int print_pointer(va_list types, char buffer[],
 
 	if (addrs == NULL)
 		return (write(1, "(nil)", 5));
-
 	buffer[BUFF_SIZE - 1] = '\0';
 	UNUSED(precision);
 
@@ -36,21 +35,17 @@ int print_pointer(va_list types, char buffer[],
 		num_addrs /= 16;
 		length++;
 	}
-
 	if ((flags & F_ZERO) && !(flags & F_MINUS))
 		padd = '0';
 	if (flags & F_PLUS)
 		extra_c = '+', length++;
 	else if (flags & F_SPACE)
 		extra_c = ' ', length++;
-
 	ind++;
-
 	/*return (write(1, &buffer[i], BUFF_SIZE - i - 1));*/
 	return (write_pointer(buffer, ind, length,
 		width, flags, padd, extra_c, padd_start));
 }
-
 /************************* PRINT NON PRINTABLE *************************/
 /**
  * print_non_printable - Prints ascii codes in hexa of non printable chars
@@ -82,15 +77,12 @@ int print_non_printable(va_list types, char buffer[],
 			buffer[i + offset] = str[i];
 		else
 			offset += append_hexa_code(str[i], buffer, i + offset);
-
 		i++;
 	}
-
 	buffer[i + offset] = '\0';
 
 	return (write(1, buffer, i + offset));
 }
-
 /************************* PRINT REVERSE *************************/
 /**
  * print_reverse - Prints reverse string.
@@ -102,7 +94,6 @@ int print_non_printable(va_list types, char buffer[],
  * @size: Size specifier
  * Return: Numbers of chars printed
  */
-
 int print_reverse(va_list types, char buffer[],
 	int flags, int width, int precision, int size)
 {
